@@ -2,6 +2,11 @@ import pygame
 import time
 import random
 
+class snake_part:
+    def __init__(self,x1,y1):
+        self.x = x1
+        self.y = y1
+
 pygame.init()
 
 white = (255, 255, 255)
@@ -27,13 +32,13 @@ score_font = pygame.font.SysFont("comicsansms", 35)
 
 
 def Your_score(score):
-    value = score_font.render("Your Score: " + str(score), True, yellow)
+    value = score_font.render("Your Score: " + str(score), True, red)
     dis.blit(value, [0, 0])
 
 
-def our_snake(snake_block, snake_list):
+def the_snake(snake_block, snake_list):
     for x in snake_list:
-        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
+        pygame.draw.rect(dis, black, [x.x, x.y, snake_block, snake_block])
 
 
 def message(msg, color):
@@ -51,7 +56,7 @@ def gameLoop():
     x1_change = 0
     y1_change = 0
 
-    snake_List = []
+    snake = []
     Length_of_snake = 1
 
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
@@ -61,15 +66,12 @@ def gameLoop():
 
         while game_close == True:
             dis.fill(blue)
-            message("You Lost! Press C-Play Again or Q-Quit", red)
+            message("You Lost! Press C to play again",red)
             Your_score(Length_of_snake - 1)
             pygame.display.update()
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_q:
-                        game_over = True
-                        game_close = False
                     if event.key == pygame.K_c:
                         gameLoop()
 
@@ -104,18 +106,16 @@ def gameLoop():
         y1 += y1_change
         dis.fill(blue)
         pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])
-        snake_Head = []
-        snake_Head.append(x1)
-        snake_Head.append(y1)
+        snake_Head = snake_part(x1,y1)
         snake_List.append(snake_Head)
         if len(snake_List) > Length_of_snake:
             del snake_List[0]
 
         for x in snake_List[:-1]:
-            if x == snake_Head:
+            if x.x == snake_Head.x and x.y == snake_Head.y:
                 game_close = True
 
-        our_snake(snake_block, snake_List)
+        the_snake(snake_block, snake_List)
         Your_score(Length_of_snake - 1)
 
         pygame.display.update()
