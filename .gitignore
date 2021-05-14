@@ -2,9 +2,12 @@ Bg1.jpg
 Bg1.png
 Game2.py
 Include/
-JokerImage.py
 Lib/
 Scripts/
-Trial.jpg
 pyvenv.cfg
 PygameTest.py
+MDP Test Case/
+visualize.py
+PlannerVerifyOutput.py
+MazeVerifyOutput.py
+generateMDP.py
