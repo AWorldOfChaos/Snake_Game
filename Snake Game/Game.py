@@ -1,8 +1,10 @@
-import pygame, sys, random
+import pygame
+import sys
+import random
 from pygame.math import Vector2
 
 
-class SNAKE:
+class Snake:
     def __init__(self):
         self.body = [Vector2(5, 10), Vector2(4, 10), Vector2(3, 10)]
         self.direction = Vector2(0, 0)
@@ -80,7 +82,7 @@ class SNAKE:
             self.tail = self.tail_down
 
     def move_snake(self):
-        if self.new_block == True:
+        if self.new_block:
             body_copy = self.body[:]
             body_copy.insert(0, body_copy[0] + self.direction)
             self.body = body_copy[:]
@@ -101,7 +103,7 @@ class SNAKE:
         self.direction = Vector2(0, 0)
 
 
-class FRUIT:
+class Fruit:
     def __init__(self):
         self.randomize()
 
@@ -109,17 +111,16 @@ class FRUIT:
         fruit_rect = pygame.Rect(int(self.pos.x * cell_size), int(self.pos.y * cell_size), cell_size, cell_size)
         screen.blit(apple, fruit_rect)
 
-
     def randomize(self):
         self.x = random.randint(0, cell_number - 1)
         self.y = random.randint(0, cell_number - 1)
         self.pos = Vector2(self.x, self.y)
 
 
-class MAIN:
+class Game:
     def __init__(self):
-        self.snake = SNAKE()
-        self.fruit = FRUIT()
+        self.snake = Snake()
+        self.fruit = Fruit()
 
     def update(self):
         self.snake.move_snake()
@@ -196,8 +197,7 @@ SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 
 
-
-main_game = MAIN()
+main_game = Game()
 
 while True:
     for event in pygame.event.get():
