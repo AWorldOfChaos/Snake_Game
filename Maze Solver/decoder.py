@@ -1,6 +1,6 @@
-file = open(r"D:\pythonProject\venv\MDP Test Case\base\data\EncodedMaze.txt", "r")
-file2 = open(r"D:\pythonProject\venv\MDP Test Case\base\data\OptimalPolicy.txt", "r")
-file3 = open(r"D:\pythonProject\venv\MDP Test Case\base\data\MazeSolution.txt", "w")
+file = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "r")
+file2 = open(r"D:\pythonProject\venv\Maze Solver\data\OptimalPolicy.txt", "r")
+file3 = open(r"D:\pythonProject\venv\Maze Solver\data\MazeSolution.txt", "w")
 
 data = []
 

@@ -11,13 +11,17 @@ class State:
         if self.state_num in end_state:
             self.state_value = 0
             return
-        value = [0]*(len(data))
-        action_possible = [False]*(len(data))
-        for i in range(len(data)):
+        counter = 0
+        value = [0]*4
+        action_possible = [False]*4
+        for i in range(self.state_num, len(data)):
             if int(data[i][1]) == self.state_num:
+                counter += 1
                 value[int(data[i][2])] += (discount*state_values[int(data[i][3])] + float(data[i][4]))\
                                           * float(data[i][5])
                 action_possible[int(data[i][2])] = True
+            elif counter > 0:
+                break
         max_value = -10000
         for i in range(len(value)):
             if max_value < value[i] and action_possible[i]:
@@ -28,7 +32,7 @@ class State:
 
 # input_loc = input()
 # file = open(input_loc, "r")
-file = open(r"D:\pythonProject\venv\MDP Test Case\base\data\EncodedMaze.txt", "r")
+file = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "r")
 mdp = []
 end_states = []
 data = []
@@ -70,16 +74,16 @@ state_values_old = state_values_new.copy()
 rtoll = 0
 atol = 1e-11
 while True:
-    for j in range(num_states):
-        mdp[j].state_value_eval(data, state_values_old, end_states, gamma)
-        state_values_new[j] = mdp[j].state_value
+    for obj in mdp:
+        obj.state_value_eval(data, state_values_old, end_states, gamma)
+        state_values_new[obj.state_num] = mdp[obj.state_num].state_value
     if np.allclose(np.array(state_values_new), np.array(state_values_old), rtoll, atol):
         break
     else:
         state_values_old = state_values_new.copy()
 for i in range(num_states):
     print(state_values_new[i], mdp[i].best_action)
-file2 = open(r"D:\pythonProject\venv\MDP Test Case\base\data\OptimalPolicy.txt", "w")
+file2 = open(r"D:\pythonProject\venv\Maze Solver\data\OptimalPolicy.txt", "w")
 for i in range(num_states):
     file2.write(str(state_values_new[i]))
     file2.write(" ")
