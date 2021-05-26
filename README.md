@@ -6,6 +6,7 @@ The Snake Game has been implemented using pygame. The associated graphics, sound
 A demo of the game can be found [here](https://drive.google.com/drive/folders/1CTkxnkQnRemGd09Aj9upi3X7SBlZLHA-?usp=sharing)
 ## 2. Maze Solver
 The Maze Solver includes an encoder, a planner and a decoder, along with some tools useful for visualization and some sample examples.
-![Game Poster](https://handsontek.net/images/Teams/Snake/hero.png)
 ## 3. GridWorld
 This is an implementation of model-free RL algorithms to solve the gridworld problem
+
+![Game Poster](https://handsontek.net/images/Teams/Snake/hero.png)
