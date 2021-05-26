@@ -92,6 +92,7 @@ class Agent:
                         for change in range(y_change):
                             file.write("S ")
 
+
                 self.current_state = self.states[self.row][self.col]
 
         self.episode_complete = False
