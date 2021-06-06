@@ -52,7 +52,7 @@ class Agent:
         self.current_state = self.states[self.row][self.col]
         self.next_state = self.states[self.row][self.col]
 
-    def episode(self, step_size, gamma, display_actions):
+    def sarsa_episode(self, step_size, gamma, display_actions):
         action_taken = 0
         while not self.episode_complete:
             if self.col == 7 and self.row == 3:
@@ -92,22 +92,23 @@ class Agent:
                         for change in range(y_change):
                             file.write("S ")
 
-
                 self.current_state = self.states[self.row][self.col]
 
         self.episode_complete = False
 
 
 file = open(r"Windy Solution.txt", "w")
-agent = Agent()
 step_size = 0.5
-start_time = time.time()
-times = []
-for i in range(150):
-    times.append(500000*(time.time() - start_time))
-    agent.episode(0.5, 1, False)
-agent.episode(0.5, 1, True)
+times = [0]*150
+for j in range(100):
+    agent = Agent()
+    start_time = time.time()
+    for i in range(150):
+        times[i] += 25000*(time.time() - start_time)
+        agent.sarsa_episode(0.5, 1, False)
 
+agent = Agent()
+agent.sarsa_episode(0.5, 1, False)
 episodes = list(range(0, 150, 1))
 plt.xlabel("Time Steps")
 plt.ylabel("Episodes")
