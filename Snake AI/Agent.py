@@ -106,9 +106,9 @@ class Agent:
                 return reward
         return -2*reward
 
-    def take_action(self, check, n):
-        epsilon = 0.1/math.sqrt(n)
-        # epsilon = 0
+    def take_action(self, check, n, fruit):
+        # epsilon = 0.1/math.sqrt(n)
+        epsilon = 0
         gamma = 0.5
         while True:
             if random.random() < epsilon:
@@ -142,6 +142,7 @@ class Agent:
             check = False
         if self.env.check_collision():
             reward += 30
+            fruit[0] += 1
 
         reward += self.exploration(current, action)
         self.state = self.state_locator()
@@ -152,14 +153,14 @@ class Agent:
         return check
 
     @staticmethod
-    def episode(n):
+    def episode(n, fruit):
         check = True
         while check:
-            check = agent.take_action(check, n)
+            check = agent.take_action(check, n, fruit)
             screen.fill((175, 215, 70))
             agent.env.draw_elements()
             pygame.display.update()
-            clock.tick(10)
+            clock.tick(180)
         print(n)
 
 
@@ -177,12 +178,14 @@ pygame.time.set_timer(SCREEN_UPDATE, 150)
 
 agent = Agent()
 n = 0
+fruit = [0]
 with open(r"D:\pythonProject\venv\Snake AI\qmatrix.npy", 'rb') as f:
-   agent.qmatrix = np.load(f)
-print(agent.qmatrix)
+    agent.qmatrix = np.load(f)
+
 while n < 100:
     n += 1
-    agent.episode(n)
-print(agent.qmatrix)
-with open(r"D:\pythonProject\venv\Snake AI\qmatrix.npy", 'wb') as f:
-    np.save(f, agent.qmatrix)
+    agent.episode(n, fruit)
+
+print("Average Fruits: ", fruit[0]/100)
+# with open(r"D:\pythonProject\venv\Snake AI\qmatrix.npy", 'wb') as f:
+#     np.save(f, agent.qmatrix)
