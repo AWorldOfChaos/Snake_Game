@@ -159,7 +159,7 @@ class Agent:
             screen.fill((175, 215, 70))
             agent.env.draw_elements()
             pygame.display.update()
-            clock.tick(180)
+            clock.tick(10)
         print(n)
 
 
