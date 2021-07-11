@@ -5,6 +5,7 @@ from pygame.math import Vector2
 import numpy as np
 import copy
 import math
+import os
 
 
 class Agent:
@@ -161,7 +162,8 @@ class Agent:
             clock.tick(30)
         print(n)
 
-
+os.getcwd()
+dirname = os.path.dirname(__file__)
 pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
 cell_size = 40
@@ -169,7 +171,8 @@ cell_number = 20
 screen = pygame.display.set_mode((cell_number * cell_size, cell_number * cell_size))
 pygame.display.set_caption("Snake Game")
 clock = pygame.time.Clock()
-apple = pygame.image.load('Graphics/apple.png').convert_alpha()
+filename = os.path.join(dirname, 'Graphics/apple.png')
+apple = pygame.image.load(filename).convert_alpha()
 game_font = pygame.font.SysFont('comicsansms', 25)
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
