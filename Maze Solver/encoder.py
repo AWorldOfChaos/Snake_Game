@@ -1,3 +1,5 @@
+import os
+
 class Action:
     def __init__(self, num, state_one, state_two):
         self.action_num = num
@@ -39,7 +41,10 @@ while True:
         maze.append(lst)
 
 file.close()
-location = input("Enter output location")
+os.getcwd()
+dirname = os.path.dirname(__file__)
+location = os.path.join(dirname, r"data\EncodedMaze.txt")
+# location = input("Enter output location")
 # file2 = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "w")
 file2 = open(location, "w")
 maze_height = len(maze)

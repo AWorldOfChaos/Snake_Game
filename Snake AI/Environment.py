@@ -2,6 +2,7 @@ import pygame
 # import sys
 import random
 from pygame.math import Vector2
+import os
 
 
 class Snake:
@@ -10,24 +11,39 @@ class Snake:
         self.direction = Vector2(0, 0)
         self.new_block = False
 
-        self.head_up = pygame.image.load('Graphics/head_up.png').convert_alpha()
-        self.head_down = pygame.image.load('Graphics/head_down.png').convert_alpha()
-        self.head_right = pygame.image.load('Graphics/head_right.png').convert_alpha()
-        self.head_left = pygame.image.load('Graphics/head_left.png').convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/head_up.png')
+        self.head_up = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/head_down.png')
+        self.head_down = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/head_right.png')
+        self.head_right = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/head_left.png')
+        self.head_left = pygame.image.load(filename).convert_alpha()
 
-        self.tail_up = pygame.image.load('Graphics/tail_up.png').convert_alpha()
-        self.tail_down = pygame.image.load('Graphics/tail_down.png').convert_alpha()
-        self.tail_right = pygame.image.load('Graphics/tail_right.png').convert_alpha()
-        self.tail_left = pygame.image.load('Graphics/tail_left.png').convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/tail_up.png')
+        self.tail_up = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/tail_down.png')
+        self.tail_down = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/tail_right.png')
+        self.tail_right = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/tail_left.png')
+        self.tail_left = pygame.image.load(filename).convert_alpha()
 
-        self.body_vertical = pygame.image.load('Graphics/body_vertical.png').convert_alpha()
-        self.body_horizontal = pygame.image.load('Graphics/body_horizontal.png').convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/body_vertical.png')
+        self.body_vertical = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/body_horizontal.png')
+        self.body_horizontal = pygame.image.load(filename).convert_alpha()
 
-        self.body_tr = pygame.image.load('Graphics/body_tr.png').convert_alpha()
-        self.body_tl = pygame.image.load('Graphics/body_tl.png').convert_alpha()
-        self.body_br = pygame.image.load('Graphics/body_br.png').convert_alpha()
-        self.body_bl = pygame.image.load('Graphics/body_bl.png').convert_alpha()
-        self.crunch_sound = pygame.mixer.Sound('Sound/crunch.wav')
+        filename = os.path.join(dirname, 'Graphics/body_tr.png')
+        self.body_tr = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/body_tl.png')
+        self.body_tl = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/body_br.png')
+        self.body_br = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Graphics/body_bl.png')
+        self.body_bl = pygame.image.load(filename).convert_alpha()
+        filename = os.path.join(dirname, 'Sound/crunch.wav')
+        self.crunch_sound = pygame.mixer.Sound(filename)
 
     def draw_snake(self):
         self.update_head_graphics()
@@ -187,7 +203,8 @@ class Game:
         screen.blit(apple, apple_rect)
         pygame.draw.rect(screen, (56, 74, 12), bg_rect, 2)
 
-
+os.getcwd()
+dirname = os.path.dirname(__file__)
 pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
 cell_size = 40
@@ -195,7 +212,8 @@ cell_number = 20
 screen = pygame.display.set_mode((cell_number * cell_size, cell_number * cell_size))
 pygame.display.set_caption("Snake Game")
 clock = pygame.time.Clock()
-apple = pygame.image.load('Graphics/apple.png').convert_alpha()
+filename = os.path.join(dirname, 'Graphics/apple.png')
+apple = pygame.image.load(filename).convert_alpha()
 game_font = pygame.font.SysFont('comicsansms', 25)
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
