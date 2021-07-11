@@ -24,9 +24,9 @@ python Game.py
 ## 2. Maze Solver
 The Maze solver section covers the model-based RL algorithms. There is a maze, details of which(transition matrix of the MDP) are entirely known to the agent. The agent uses this data to find the _shortest_ path through the maze. Some sample mazes and their solutions are provided as .txt files.
 To run this section, follow the following steps,
-- Run encoder.py and input the location of the .txt file containing the maze(gridfile) followed by the output location where encoded maze must be stored
-- Run planner.py and input the location of the encoded maze followed by the output location of the policy
-- Run decoder.py and input location of encoded maze, then the location of optimal policy and then the location where the output(pathfile) must be stored.
+- Run encoder.py and input the location of the .txt file containing the maze(gridfile)
+- Run planner.py
+- Run decoder.py
 
 To visualise the maze, use this command, 
 ``` 
