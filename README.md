@@ -26,7 +26,7 @@ The Maze solver section covers the model-based RL algorithms. There is a maze, d
 To run this section, follow the following steps,
 - Run encoder.py and input the location of the .txt file containing the maze(gridfile)
 - Run planner.py
-- Run decoder.py
+- Run decoder.py. The solution is saved in 'data/MazeSolution.txt'
 
 To visualise the maze, use this command, 
 ``` 
