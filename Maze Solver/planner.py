@@ -30,9 +30,9 @@ class State:
         self.state_value = max_value
 
 
-# input_loc = input()
-# file = open(input_loc, "r")
-file = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "r")
+input_loc = input("Enter location of Encoded Maze")
+# file = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "r")
+file = open(input_loc, "r")
 mdp = []
 end_states = []
 data = []
@@ -83,7 +83,9 @@ while True:
         state_values_old = state_values_new.copy()
 for i in range(num_states):
     print(state_values_new[i], mdp[i].best_action)
-file2 = open(r"D:\pythonProject\venv\Maze Solver\data\OptimalPolicy.txt", "w")
+output_loc = input("Enter output location of encoded policy")
+# file2 = open(r"D:\pythonProject\venv\Maze Solver\data\OptimalPolicy.txt", "w")
+file2 = open(output_loc, "w")
 for i in range(num_states):
     file2.write(str(state_values_new[i]))
     file2.write(" ")

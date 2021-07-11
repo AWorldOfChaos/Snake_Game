@@ -1,6 +1,12 @@
-file = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "r")
-file2 = open(r"D:\pythonProject\venv\Maze Solver\data\OptimalPolicy.txt", "r")
-file3 = open(r"D:\pythonProject\venv\Maze Solver\data\MazeSolution.txt", "w")
+loc1 = input("Enter location of Encoded Maze")
+loc2 = input("Enter location of Optimal Policy")
+loc3 = input("Enter location where Maze Solution is to be stored")
+# file = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "r")
+# file2 = open(r"D:\pythonProject\venv\Maze Solver\data\OptimalPolicy.txt", "r")
+# file3 = open(r"D:\pythonProject\venv\Maze Solver\data\MazeSolution.txt", "w")
+file = open(loc1, "r")
+file2 = open(loc2, "r")
+file3 = open(loc3, "w")
 
 data = []
 

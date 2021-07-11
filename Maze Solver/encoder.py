@@ -39,7 +39,9 @@ while True:
         maze.append(lst)
 
 file.close()
-file2 = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "w")
+location = input("Enter output location")
+# file2 = open(r"D:\pythonProject\venv\Maze Solver\data\EncodedMaze.txt", "w")
+file2 = open(location, "w")
 maze_height = len(maze)
 maze_width = len(maze[0])
 states = []
