@@ -39,7 +39,7 @@ python visualize.py gridfile pathfile
 ## 3. GridWorld
 The gridworld problem is a problem in which the agent has to be learn about the environment(model is not known). Using model-free algorithms, the agent tries to find its way from start to finish through the gridworld.
 
-## Snake AI
+## 4. Snake AI
 This is the main project. 
 - To see the agent train, run Untrained Agent.py and see the agent become better gradually.
 - To see the final trained agent, run Agent.py 
