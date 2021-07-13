@@ -164,6 +164,7 @@ class Agent:
             clock.tick(10)
         print(n)
 
+
 os.getcwd()
 dirname = os.path.dirname(__file__)
 pygame.mixer.pre_init(44100, -16, 2, 512)
