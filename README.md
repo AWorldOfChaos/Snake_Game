@@ -80,9 +80,9 @@ The training time increases exponentially if we increase the state space (improv
 ### Training
 We can get an idea about the training of our model by plotting the average number of fruits eaten by our snake in every 10 episodes as it trains.
 For the obstacle state, the training graph is as follows:
-![](.\Snake AI\fruits_episodes.png "Histogram").
+![](./Snake AI/fruits_episodes.png "Training Data").
 
 ### Trained Agent
 We can plot a histogram of the number of fruits our agent consumes over a span of 300 episodes. This gives us an estimate of our performance. I've also added mean and max data outputs on the histogram itself.
-![](.\Snake AI\fruits_episodes_hist.png "Histogram").
+![](./Snake AI/fruits_episodes_hist.png "Histogram").
 ![Game Poster](https://handsontek.net/images/Teams/Snake/hero.png)
